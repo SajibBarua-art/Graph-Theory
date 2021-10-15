@@ -1,4 +1,4 @@
-// Disjoint set
+// Disjoint set: Path compression
 // Problem Link: https://assessment.hackerearth.com/challenges/college/codemania-20/algorithm/owl-fight/
 
 #include<bits/stdc++.h>
@@ -7,7 +7,7 @@ using namespace std;
 int ar[10004];
 
 int findParent(int node) {
-	if(ar[node]<0) return node;
+	if(ar[node] < 0) return node;
 
 	return ar[node] = findParent(ar[node]);
 }
@@ -20,6 +20,7 @@ void Union(int a, int b) {
 int main() {
 	int n, m; cin >> n >> m;
 	
+	// first initialize all node is a parent node
 	for(int i=1; i<=n; i++) ar[i] = -i;
 
 	for(int i=1; i<=m; i++) {
