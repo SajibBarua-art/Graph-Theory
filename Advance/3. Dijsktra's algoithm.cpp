@@ -5,7 +5,7 @@
 using namespace std;
 
 const int nodes = 100005;
-const int INF = 0x7fffffff;
+const int INF = INT_MAX;
 
 vector< pair<int, int> > w_graph[nodes];
 vector<int> dist(nodes, INF);
