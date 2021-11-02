@@ -22,9 +22,9 @@ void dijsktra() {
 		pq.pop();
 
 		for(pair<int, int> edge: w_graph[curr_node]) {
-			if(curr_dist + edge.second < dist[edge.first]) {
-				dist[edge.first] = curr_dist + edge.second;
-				pq.push({ dist[edge.first], edge.first });
+			if(curr_dist + edge.first < dist[edge.second]) {
+				dist[edge.second] = curr_dist + edge.first;
+				pq.push({ dist[edge.second], edge.second });
 			}
 		}
 	}
@@ -36,8 +36,8 @@ int main() {
 	for(int i=0; i<m; i++) {
 		int a, b, w; cin >> a >> b >> w;
 
-		w_graph[a].push_back({b, w});
-		w_graph[b].push_back({a, w});
+		w_graph[a].push_back({w, b});
+		w_graph[b].push_back({w, a});
 	}
 
 	dijsktra();
