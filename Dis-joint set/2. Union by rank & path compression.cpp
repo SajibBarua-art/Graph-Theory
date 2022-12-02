@@ -6,31 +6,29 @@ using namespace std;
 
 const int nodes = 1e5+5;
 
-int ar[nodes], Rank[nodes];
+int par[nodes], Rank[nodes];
 
 int findParent(int node) {
-	if(ar[node]<0) return node;
+    if(par[node]<0) return node;
 
-	// using path compression
-	return ar[node] = findParent(ar[node]);
+    // using path compression
+    return par[node] = findParent(par[node]);
 }
 
-void merge(int a, int b) {
-	a = findParent(a); b = findParent(b);
+int merge(int a, int b) {
+    a = findParent(a); b = findParent(b);
 
-	// using union by rank
-	if(a != b) {
-		if(Rank[a] > Rank[b]) {
-			// a would be parent
-			Rank[b] = a;
-			Rank[a] += Rank[b];
-		}
-		else {
-			// b would be parent
-			Rank[a] = b;
-			Rank[a] += Rank[b];
-		}
-	}
+    // using union by rank
+    if(Rank[a] > Rank[b]) {
+        // a would be parent
+        par[b] = a;
+        return (Rank[a] += Rank[b])-1;
+    }
+    else {
+        // b would be parent
+        par[a] = b;
+        return (Rank[b] += Rank[a])-1;
+    }
 }
 
 int main() {
