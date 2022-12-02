@@ -15,19 +15,21 @@ int findParent(int node) {
     return par[node] = findParent(par[node]);
 }
 
-int merge(int a, int b) {
+void merge(int a, int b) {
     a = findParent(a); b = findParent(b);
 
     // using union by rank
     if(Rank[a] > Rank[b]) {
         // a would be parent
         par[b] = a;
-        return (Rank[a] += Rank[b])-1;
+	Rank[a] += Rank[b]
+        return;
     }
     else {
         // b would be parent
         par[a] = b;
-        return (Rank[b] += Rank[a])-1;
+	Rank[b] += Rank[a]
+        return;
     }
 }
 
