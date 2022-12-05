@@ -22,13 +22,13 @@ void merge(int a, int b) {
     if(Rank[a] > Rank[b]) {
         // a would be parent
         par[b] = a;
-	Rank[a] += Rank[b]
+	Rank[a] += Rank[b];
         return;
     }
     else {
         // b would be parent
         par[a] = b;
-	Rank[b] += Rank[a]
+	Rank[b] += Rank[a];
         return;
     }
 }
