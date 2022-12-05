@@ -36,7 +36,7 @@ void merge(int a, int b) {
 int main() {
 	int n, m; cin >> n >> m;
 	
-	for(int i=1; i<=n; i++) ar[i] = -i, Rank[i] = 1;
+	for(int i=1; i<=n; i++) par[i] = -i, Rank[i] = 1;
 
 	for(int i=1; i<=m; i++) {
 		int a, b; cin >> a >> b;
